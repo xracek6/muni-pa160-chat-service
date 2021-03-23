@@ -10,7 +10,7 @@ servers:
   - url: 'http://{server}:8080/api'
     variables:
       server:
-        default: localhost
+        default: ip-78-128-251-137.flt.cloud.muni.cz
 paths:
   '/messages':
     get:
