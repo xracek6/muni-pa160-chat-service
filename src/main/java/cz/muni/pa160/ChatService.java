@@ -1,6 +1,5 @@
 package cz.muni.pa160;
 
-import org.apache.commons.text.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -18,8 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 
 /**
  * Simple web service implemented using Spring Boot framework.
@@ -83,17 +83,20 @@ public class ChatService {
         // generate messages in reverse order
         PrintWriter out = res.getWriter();
         out.println("<html><body><h1>PA160 Chat Service</h1>");
-        ArrayList<ChatMessage> copyOfList = new ArrayList<>(chatMessages);
-        Collections.reverse(copyOfList);
-        for (ChatMessage c : copyOfList) {
-            out.println("<div class=\"message\" style=\"" +
-                    "margin: 10px ; padding: 10px " +
-                    "; color: " + StringEscapeUtils.escapeHtml4(c.getTextColor()) +
-                    "; background-color: " + StringEscapeUtils.escapeHtml4(c.getBackgroundColor())
-                    + "\" >");
-            out.println("from: <b>" + StringEscapeUtils.escapeHtml4(c.getAuthor()) + "</b><br/><br/>");
-            out.println(StringEscapeUtils.escapeHtml4(c.getText()) + "<br/>");
-            out.println("</div>");
+        // prevent race condition on concurrent accesses
+        synchronized (chatMessages) {
+            // iterate messages in reverse order
+            for (int i = chatMessages.size(); i-- > 0; ) {
+                ChatMessage c = chatMessages.get(i);
+                out.println("<div class=\"message\" style=\"" +
+                        "margin: 10px ; padding: 10px " +
+                        "; color: " + escapeHtml4(c.getTextColor()) +
+                        "; background-color: " + escapeHtml4(c.getBackgroundColor())
+                        + "\" >");
+                out.println("from: <b>" + escapeHtml4(c.getAuthor()) + "</b><br/><br/>");
+                out.println(escapeHtml4(c.getText()) + "<br/>");
+                out.println("</div>");
+            }
         }
     }
 
