@@ -1,7 +1,7 @@
 # muni-pa160-chat-service
-Example of a web service with OpenAPI description
+Example of a web service with OpenAPI description in [openapi.yml](src/main/resources/static/openapi.yml)
 
-Prerequisites: git, <a href="https://maven.apache.org/">Apache Maven</a> and JDK 11+ 
+Prerequisites: git, [Apache Maven](https://maven.apache.org/) and JDK 11+ 
 
 Download and compile:
 ```bash
