@@ -7,10 +7,12 @@ info:
     email: makub@ics.muni.cz
     name: Martin Kuba
 servers:
-  - url: 'http://{server}:8080/api'
+  - url: 'https://ip-78-128-251-137.flt.cloud.muni.cz:8443/api'
+  - url: '{scheme}://{server}:{port}}/api'
     variables:
-      server:
-        default: ip-78-128-251-137.flt.cloud.muni.cz
+      scheme: { enum: [ 'https', 'http' ], default: http }
+      server: { default: localhost }
+      port: { default: '8080' }
 paths:
   '/messages':
     get:

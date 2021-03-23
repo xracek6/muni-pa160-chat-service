@@ -14,13 +14,13 @@
 
 <p>Visit <a href="/api/messages">/api/messages</a> with your browser to get all messages in JSON format.</p>
 
-<p>Post a new message using command line (replace localhost with the DNS name of the server):</p>
+<p>Post a new message using command line (replace the URL prefix with real value):</p>
 <pre style="background-color: beige">
-    curl -X POST 'http://localhost:8080/api/messages?text=Hello+World+!'
+    curl -X POST 'https://ip-78-128-251-137.flt.cloud.muni.cz:8443/api/messages?text=Hello+World+!'
 </pre>
 
 <p><a target="_blank" href="https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmartin-kuba%2Fmuni-pa160-chat-service%2Fmain%2Fsrc%2Fmain%2Fresources%2Fstatic%2Fopenapi.yml">Open the OpenAPI description in Swagger Editor</a>
-, replace the <i>localhost</i>  value in the <b>server</b> variable with the real DNS name and try to call the service.</p>
+,  and try to call the service.</p>
 
 <h2>Bonus: Python client</h2>
 In the Swagger Editor, click <b>Generate Client - python</b> in the top menu. A file named python-client-generated.zip
@@ -28,7 +28,7 @@ will be downloaded. Extract the ZIP file into an empty folder. Read the extracte
 titled „Getting Started”. Copy the example client code into a new file in the same folder, and add the following two lines just after the imports:
 <pre style="background-color: beige">
 configuration = swagger_client.configuration.Configuration()
-configuration.host = 'http://localhost:8080/api'
+configuration.host = 'https://ip-78-128-251-137.flt.cloud.muni.cz:8443/api'
 </pre>
 where you need to replace localhost with the actual name of the server.
 <p>
