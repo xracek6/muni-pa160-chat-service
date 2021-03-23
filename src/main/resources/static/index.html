@@ -7,7 +7,8 @@
 <h1>PA160 Chat Web Service</h1>
 <p>This is an example of a web service. It is implemented using the
     <a href="https://spring.io/projects/spring-boot">Spring Boot</a> framework in Java.
-    Its sources are available at <a href="https://github.com/martin-kuba/muni-pa160-chat-service">https://github.com/martin-kuba/muni-pa160-chat-service</a>.
+    Its sources are available at <a href="https://github.com/martin-kuba/muni-pa160-chat-service">https://github.com/martin-kuba/muni-pa160-chat-service</a>,
+    its implementation is in <a href="https://github.com/martin-kuba/muni-pa160-chat-service/blob/main/src/main/java/cz/muni/pa160/ChatService.java">ChatService.java</a>.
 </p>
 <p>Visit <a href="/chat">/chat</a> with your browser to see all messages on an HTML page.</p>
 
@@ -18,7 +19,20 @@
     curl -X POST 'http://localhost:8080/api/messages?text=Hello+World+!'
 </pre>
 
-<p><a href="https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmartin-kuba%2Fmuni-pa160-chat-service%2Fmaster%2Fsrc%2Fmain%2Fresources%2Fopenapi.yml">Open the OpenAPI description in Swagger Editor</a></p>
+<p><a target="_blank" href="https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmartin-kuba%2Fmuni-pa160-chat-service%2Fmain%2Fsrc%2Fmain%2Fresources%2Fstatic%2Fopenapi.yml">Open the OpenAPI description in Swagger Editor</a>
+, replace the <i>localhost</i>  value in the <b>server</b> variable with the real DNS name and try to call the service.</p>
 
+<h2>Bonus: Python client</h2>
+In the Swagger Editor, click <b>Generate Client - python</b> in the top menu. A file named python-client-generated.zip
+will be downloaded. Extract the ZIP file into an empty folder. Read the extracted README.md file, namely the part
+titled „Getting Started”. Copy the example client code into a new file in the same folder, and add the following two lines just after the imports:
+<pre style="background-color: beige">
+configuration = swagger_client.configuration.Configuration()
+configuration.host = 'http://localhost:8080/api'
+</pre>
+where you need to replace localhost with the actual name of the server.
+<p>
+Run the python client.
+</p>
 </body>
 </html>
