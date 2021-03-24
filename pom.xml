@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>cz.muni</groupId>
 	<artifactId>pa160_chat_service</artifactId>
-	<version>1.0</version>
+	<version>1.0.2</version>
 	<name>pa160_chat_service</name>
 	<description>Example web service with OpenAPI description for the course PA160 at Masaryk University</description>
 

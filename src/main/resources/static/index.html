@@ -5,22 +5,33 @@
 </head>
 <body>
 <h1>PA160 Chat Web Service</h1>
-<p>This is an example of a web service. It is implemented using the
-    <a href="https://spring.io/projects/spring-boot">Spring Boot</a> framework in Java.
-    Its sources are available at <a href="https://github.com/martin-kuba/muni-pa160-chat-service">https://github.com/martin-kuba/muni-pa160-chat-service</a>,
-    its implementation is in <a href="https://github.com/martin-kuba/muni-pa160-chat-service/blob/main/src/main/java/cz/muni/pa160/ChatService.java">ChatService.java</a>.
-</p>
+<p>This is an example of a web service with machine-processable OpenAPI description.</p>
+
+<h2>Interface</h2>
+
 <p>Visit <a target="_blank" href="/chat">/chat</a> with your browser to see all messages on an HTML page.</p>
 
-<p>Visit <a target="_blank" href="/api/messages">/api/messages</a> with your browser to get all messages in JSON format.</p>
+<p>Visit <a target="_blank" href="/api/messages">/api/messages</a> with your browser to get all messages in JSON format.
+The same data can be obtained from command line:</p>
+<pre style="background-color: beige">
+    curl 'https://ip-78-128-251-137.flt.cloud.muni.cz:8443/api/messages'
+</pre>
 
-<p>Post a new message using command line (replace the URL prefix with real value):</p>
+<p>Post a new message using command line:</p>
 <pre style="background-color: beige">
     curl -X POST 'https://ip-78-128-251-137.flt.cloud.muni.cz:8443/api/messages?text=Hello+World+!'
 </pre>
 
-<p><a target="_blank" href="https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmartin-kuba%2Fmuni-pa160-chat-service%2Fmain%2Fsrc%2Fmain%2Fresources%2Fstatic%2Fopenapi.yml">Open the OpenAPI description in Swagger Editor</a>
-,  and try to call the service.</p>
+<p><a target="_blank" href="https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmartin-kuba%2Fmuni-pa160-chat-service%2Fmain%2Fsrc%2Fmain%2Fresources%2Fstatic%2Fopenapi.yml"
+    >Open the OpenAPI description in Swagger Editor</a>,  and try to call the service.</p>
+
+<h2>Implementation</h2>
+<p>
+    This web service is implemented in Java using the Spring Boot framework.
+    See the implementation in the file <a target="_blank" href="https://github.com/martin-kuba/muni-pa160-chat-service/blob/main/src/main/java/cz/muni/pa160/ChatService.java"
+    >ChatService.java</a>.
+    The whole project is available at <a target="_blank" href="https://github.com/martin-kuba/muni-pa160-chat-service">https://github.com/martin-kuba/muni-pa160-chat-service</a>.
+</p>
 
 <h2>Bonus: Python client</h2>
 In the Swagger Editor, click <b>Generate Client - python</b> in the top menu. A file named python-client-generated.zip

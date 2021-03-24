@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -41,6 +42,13 @@ public class ChatService {
 
     // in-memory storage of messages
     private final List<ChatMessage> chatMessages = new ArrayList<>();
+
+    // the last step of initialization
+    @PostConstruct
+    public void init() {
+        chatMessages.add(new ChatMessage("\uD83D\uDEC8 system","first message", "black", "#b8fcfa"));
+        log.info("the first message added");
+    }
 
     /**
      * REST method returning all messages.
