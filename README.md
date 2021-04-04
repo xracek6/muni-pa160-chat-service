@@ -38,14 +38,14 @@ java -jar target/pa160_chat_service.jar \
 1. see the content of the file [.github/workflows/test.yml](.github/workflows/test.yml) that controls the test CI workflow
 1. edit the file [src/main/java/cz/muni/pa160/ChatService.java](src/main/java/cz/muni/pa160/ChatService.java) by clicking the pencil icon
 1. comment out the third line with `import org.slf4j.Logger;` and commit the change
-1. visit the **Actions** page and check that the two builds have failed, the badge in README is now red
+1. visit the **[Actions](../../actions)** page and check that the two builds have failed, the badge in README is now red
 1. edit the file again, uncomment the line and commit the change
-1. visit the **Actions** page and check that the two builds are passing
+1. visit the **[Actions](../../actions)** page and check that the two builds are passing
 1. the badge becomes green again, if not, press CTRL+SHIFT+R to reload its image
 ## Continuous delivery
 1. see the content of the file [.github/workflows/release_assets.yml](.github/workflows/release_assets.yml) that controls the CD workflow
-1. visit the **Releases** page and click on **Draft a new release**
+1. visit the **[[Releases]](../../releases)** page and click on **Draft a new release**
 1. Type a tag name into the *Tag version* form field and a title into *Release title*
 1. click **Publish release**
-1. visit the **Actions** page to see how the workflow is executed
+1. visit the **[Actions](../../actions)** page to see how the workflow is executed
 1. after it finishes, visit the **Releases** page to see the created JAR file 
