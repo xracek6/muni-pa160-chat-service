@@ -1,32 +1,36 @@
 # from https://github.com/actions/upload-release-asset
-name: "Make a release"
+name: "create a release"
 on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*' # tag names matching starting with "v" , i.e. v1.0, v20.15.10
 
 jobs:
   publish:
-    name: "Build and upload release asset"
+    name: "build and upload release assets"
     runs-on: ubuntu-latest
     steps:
-      - name: "Check out code"
+      - name: "check out code"
         uses: actions/checkout@v2
-      - name: "Set up JDK"
+
+      - name: "set up JDK"
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: "Cache"
+
+      - name: "restore cached maven repository"
         uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-      - name: "Compile and package"
+
+      - name: "compile and package"
         run: mvn -B clean package
-      - name: "Create Release"
+
+      - name: "create release"
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -36,13 +40,15 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: "Upload Release Asset"
+
+      - name: "upload release asset"
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./target/pa160_chat_service.jar
           asset_name: pa160_chat_service.jar
           asset_content_type: application/java-archive

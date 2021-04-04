@@ -1,3 +1,5 @@
+![](workflows/test%20build/badge.svg)
+
 # muni-pa160-chat-service
 Example of a web service with OpenAPI description in [openapi.yml](src/main/resources/static/openapi.yml)
 
