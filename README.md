@@ -1,4 +1,4 @@
-![](workflows/test%20build/badge.svg)
+![](https://github.com/martin-kuba/muni-pa160-chat-service/workflows/test%20build/badge.svg)
 
 # muni-pa160-chat-service
 Example of a web service with OpenAPI description in [openapi.yml](src/main/resources/static/openapi.yml)
