@@ -1,8 +1,7 @@
+name: "upload release assets"
 on:
   release:
-    types:
-      - created
-
+    types: [ 'created' ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,7 +25,7 @@ jobs:
       - name: "compile and package"
         run: mvn -B clean package
 
-      - name: "upload release asset"
+      - name: "upload jar as a release asset"
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
