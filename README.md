@@ -1,4 +1,4 @@
-![](https://github.com/martin-kuba/muni-pa160-chat-service/workflows/test%20build/badge.svg)
+![](../../workflows/test%20build/badge.svg)
 
 # muni-pa160-chat-service
 Example of a web service with OpenAPI description in [openapi.yml](src/main/resources/static/openapi.yml)
@@ -38,7 +38,7 @@ java -jar target/pa160_chat_service.jar \
 1. see the content of the file [.github/workflows/test.yml](.github/workflows/test.yml) that controls the test CI workflow
 1. edit the file [src/main/java/cz/muni/pa160/ChatService.java](src/main/java/cz/muni/pa160/ChatService.java) by clicking the pencil icon
 1. comment out the third line with `import org.slf4j.Logger;` and commit the change
-1. visit the **Actions** page and check that the two builds has failed, the badge in README is now red
+1. visit the **Actions** page and check that the two builds have failed, the badge in README is now red
 1. edit the file again, uncomment the line and commit the change
 1. visit the **Actions** page and check that the two builds are passing
 1. the badge becomes green again, if not, press CTRL+SHIFT+R to reload its image
